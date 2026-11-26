@@ -156,4 +156,5 @@ export function registerLegacyConnector(ctx) {
     order: ctx.systemPrompt.getSectionOrder('MCP_SERVERS'),
     text: 'For explicit requests to connect OCTER Ads, call octer_ads_connect and show its exact browser link. For requests to bind a specific ad platform, use OCTER Ads MCP when available. When the entire user message is ads, use the OCTER Ads MCP list_platforms tool if available, or octer_ads_connection_status otherwise.',
   }), 'OCTER Ads legacy guidance')
+  return account
 }

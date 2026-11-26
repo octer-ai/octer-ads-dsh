@@ -6,22 +6,26 @@ A free-forever ad management and optimization plugin. OCTER Ads supports GPT Ads
 
 ## 安装与授权 / Install and connect
 
-需要 DeepSeek Harness **0.2.3-alpha.2** 或兼容的更新版本。
+OCTER Ads **0.2.0** 支持 DeepSeek Harness **0.2.2-rc.5** 和 **0.2.3-alpha.2**。桌面版可在「插件 → 添加插件」粘贴本仓库的 GitHub 地址。已通过版本豁免安装 0.1.0 的用户，请更新到 0.2.0。
 
-Requires DeepSeek Harness **0.2.3-alpha.2** or a compatible newer version.
+OCTER Ads **0.2.0** supports DeepSeek Harness **0.2.2-rc.5** and **0.2.3-alpha.2**. On Desktop, paste this repository's GitHub URL in **Plugins → Add plugin**. If you installed 0.1.0 with a version exemption, update to 0.2.0.
 
 ```sh
 dsh plugin --profile web add github:octer-ai/octer-ads-dsh
 dsh --profile web
 ```
 
-使用兼容版本的桌面客户端时，可在「插件」中搜索并安装 `github:octer-ai/octer-ads-dsh`。
+### 连接 OCTER / Connect OCTER
 
-In a compatible Desktop client, search for and install `github:octer-ai/octer-ads-dsh` in Plugins.
+- **Harness 0.2.2-rc.5**：在对话里输入「连接 OCTER Ads」，用同一台电脑的浏览器打开授权链接。授权后回到 Harness 输入 `ads`。输入「断开 OCTER Ads」可清除 Harness 中保存的授权。
+- **Harness 0.2.3-alpha.2**：在「插件」中打开 **OCTER Ads**，点击「连接 OCTER Ads」并在浏览器完成授权。可在同一页面退出。
 
-在「插件」中打开 **OCTER Ads**，点击「连接 OCTER Ads」并在浏览器完成授权。如果还没有绑定广告账号，请到 [OCTER Ads](https://ads-mcp.octer.ai/) 绑定。插件的 MCP 服务器名称为 `ads`。如果曾手动添加同名服务器，请先在设置中移除同名条目，保留其余配置。
+- **Harness 0.2.2-rc.5** — type “Connect OCTER Ads” in chat and open the authorization link in a browser on the same computer. Return to Harness and enter `ads`. Say “Disconnect OCTER Ads” to clear the saved authorization.
+- **Harness 0.2.3-alpha.2** — open **OCTER Ads** in Plugins and select **Connect OCTER Ads** to authorize it in your browser. You can sign out on the same page.
 
-Open **OCTER Ads** in Plugins, select **Connect OCTER Ads**, and authorize it in your browser. If you need to link ad accounts, visit [OCTER Ads](https://ads-mcp.octer.ai/). The plugin registers the MCP server as `ads`. If you already added a server with that name manually, remove that entry in Settings before enabling the plugin.
+如果还没有绑定广告账号，请到 [OCTER Ads](https://ads-mcp.octer.ai/) 绑定。插件的 MCP 服务器名称为 `ads`。如果曾手动添加同名服务器，请先在设置中移除同名条目，保留其余配置。
+
+If you need to link ad accounts, visit [OCTER Ads](https://ads-mcp.octer.ai/). The plugin registers the MCP server as `ads`. If you already added a server with that name manually, remove that entry in Settings before enabling the plugin.
 
 ## 绑定 GPT Ads / Connect GPT Ads
 
@@ -68,6 +72,6 @@ Enter `ads` to see which ad platforms are connected, or paste one of the prompts
 - Compare the last 7 days of Meta Ads performance with the previous 7 days. Show changes in spend, clicks, and conversions by campaign.
 - Summarize the last 30 days of Microsoft Ads performance with a campaign table and bar charts for spend and conversions.
 
-在「插件」的 **OCTER Ads** 页面退出可清除 Harness 中保存的授权。可用平台和操作取决于当前 OCTER 账号的绑定状态和授权。
+可用平台和操作取决于当前 OCTER 账号的绑定状态和授权。
 
-Sign out on the **OCTER Ads** plugin page to clear the grant stored in Harness. Available platforms and actions depend on your connected accounts and permissions in OCTER.
+Available platforms and actions depend on your connected accounts and permissions in OCTER.

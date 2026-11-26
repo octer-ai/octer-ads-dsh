@@ -1,6 +1,6 @@
 {
   "name": "octer-ads-dsh",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Free-forever ad management, optimization, and performance reporting for DeepSeek Harness.",
   "type": "module",
   "main": "./index.js",
@@ -13,12 +13,14 @@
   },
   "files": [
     "index.js",
+    "legacy.js",
+    "legacy-oauth.js",
     "icon.png",
     "cordis.patch.yml",
     "locale/*.json"
   ],
   "engines": {
-    "dsh": ">=0.2.3-alpha.2 <0.3.0"
+    "dsh": "0.2.2-rc.5 || >=0.2.3-alpha.2 <0.3.0"
   },
   "dsh": {
     "bundle": {

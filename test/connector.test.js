@@ -13,6 +13,7 @@ test('registers the production server and the OAuth account under the same name'
 
   apply({
     mcpManager: {
+      startAuthorization() {},
       register: (server, config) => {
         entry = { server, config }
       },
@@ -54,9 +55,38 @@ test('registers the production server and the OAuth account under the same name'
 test('keeps the MCP integration available without the Plugins page service', () => {
   const registered = []
   apply({
-    mcpManager: { register: (server) => registered.push(server) },
+    mcpManager: { startAuthorization() {}, register: (server) => registered.push(server) },
     inject: () => {},
   })
 
   assert.deepEqual(registered, ['ads'])
+})
+
+test('registers the legacy transport without relying on native OAuth', () => {
+  let server
+  const tools = []
+  const cleanup = []
+  const ctx = {
+    mcpManager: { register: (name, config) => { server = { name, config } } },
+    credentials: { modifyRecord: async () => undefined, unset: async () => {} },
+    tools: { register: ({ name }) => { tools.push(name) } },
+    systemPrompt: { getSectionOrder: () => 0, section: () => {} },
+    inject: (services, activate) => {
+      assert.deepEqual(services, ['credentials', 'tools', 'systemPrompt'])
+      activate(ctx)
+    },
+    effect: (activate) => cleanup.push(activate()),
+  }
+  apply(ctx)
+  assert.deepEqual(server, {
+    name: 'ads',
+    config: {
+      transport: 'streamable-http',
+      url: 'https://ads-mcp.octer.ai/mcp',
+      headers: { Authorization: 'Bearer ${credential:OCTER_ADS_DSH_LEGACY_ACCESS_TOKEN}' },
+      toolLoading: 'eager',
+    },
+  })
+  assert.deepEqual(tools, ['octer_ads_connect', 'octer_ads_connection_status', 'octer_ads_disconnect'])
+  for (const dispose of cleanup) dispose?.()
 })

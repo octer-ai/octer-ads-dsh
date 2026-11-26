@@ -25,13 +25,26 @@ Open **OCTER Ads** in Plugins, select **Connect OCTER Ads**, and authorize it in
 
 ## 绑定 GPT Ads / Connect GPT Ads
 
+### 中文步骤
+
 1. 连接 OCTER Ads 后，在 Harness 输入「帮我绑定 GPT Ads 账号」并打开助手返回的 OCTER 绑定链接。
 2. 从 GPT Ads Manager 获取 Advertiser API Key，仅在 OCTER 的绑定页面填写并验证。
 3. 回到 Harness 输入 `ads`，确认 GPT Ads 已绑定。
 
+### English steps
+
 1. After connecting OCTER Ads, enter “Help me connect my GPT Ads account” in Harness and open the OCTER link returned by the assistant.
 2. Get your Advertiser API Key from GPT Ads Manager and enter it on the OCTER account connection page.
 3. Return to Harness and enter `ads` to confirm that GPT Ads is connected.
+
+### 更多绑定示例 / More connection prompts
+
+| 中文 | English |
+| --- | --- |
+| 帮我绑定 Google Ads 账号，给我 OCTER 的绑定链接。 | Help me connect my Google Ads account and give me the OCTER connection link. |
+| 帮我连接 Meta Ads，告诉我在哪里完成授权。 | Help me connect Meta Ads and tell me where to authorize access. |
+| 我想绑定 Microsoft Ads，帮我打开绑定流程。 | I want to connect Microsoft Ads. Help me start the connection process. |
+| 我已授权 GPT Ads，帮我检查是否绑定成功。 | I've authorized GPT Ads. Check whether the account is connected. |
 
 ## 使用示例 / Example prompts
 

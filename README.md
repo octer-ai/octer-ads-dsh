@@ -4,29 +4,17 @@
 
 [English](README.en.md)
 
-**永久免费的广告管理和优化插件。** 在 DeepSeek Harness 连接广告账号、生成投放报表、分析表现并制定优化方案。账号连接、数据查询和报表功能均可免费使用。实际投放费用由各广告平台结算。 [OCTER Ads 官网](https://ads-mcp.octer.ai/)
+**永久免费的广告管理和优化插件。** 支持 GPT Ads、Google Ads、Meta Ads、Microsoft Ads、Amazon Ads 和 TikTok Ads。实际投放费用由各平台结算，账号和操作权限由 OCTER API 校验。 [OCTER Ads 官网](https://ads-mcp.octer.ai/)
 
 ## 装好后能做什么
 
-| 入口 | 功能 |
+| 项目 | 说明 |
 | --- | --- |
 | **插件详情** | 授权 OCTER、绑定广告账号，查看各平台的连接状态和当前权限 |
 | **左侧栏 OCTER Ads** | 按平台、账号和日期生成投放报表，查看花费、展示、点击、转化及广告系列明细 |
 | **对话** | 用指标卡、趋势图和明细表呈现投放结果。比较两个周期，找出花费上升或转化下滑的广告系列，并给出优化建议 |
 | **报表偏好** | 保存常用平台、账号和统计周期，方便重复查看周报或复盘同一账号 |
-
-### 支持的广告平台
-
-| 广告平台 |
-| --- |
-| <img src="ui/platform-icons/openai.png" width="20" height="20" alt=""> GPT Ads |
-| <img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt=""> Google Ads |
-| <img src="ui/platform-icons/meta.svg" width="20" height="20" alt=""> Meta Ads |
-| <img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt=""> Microsoft Ads |
-| <img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt=""> Amazon Ads |
-| <img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt=""> TikTok Ads |
-
-连接账号后，可查询该平台返回的投放数据。报表维度、指标和可执行的广告操作取决于平台 API 与账号授权。
+| **支持的广告平台** | <img src="ui/platform-icons/openai.png" width="20" height="20" alt="">&nbsp;GPT Ads&emsp;<img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt="">&nbsp;Google Ads&emsp;<img src="ui/platform-icons/meta.svg" width="20" height="20" alt="">&nbsp;Meta Ads<br><img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt="">&nbsp;Microsoft Ads&emsp;<img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt="">&nbsp;Amazon Ads&emsp;<img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt="">&nbsp;TikTok Ads<br>连接账号后，可查询该平台返回的投放数据。报表维度、指标和可执行的广告操作取决于平台 API 与账号授权。 |
 
 ### API 权限控制
 

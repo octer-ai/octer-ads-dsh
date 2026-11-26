@@ -4,29 +4,17 @@
 
 [中文](README.md)
 
-**A free-forever ad management and optimization plugin.** Connect ad accounts, build performance reports, and plan campaign improvements in DeepSeek Harness. Account connections, data queries, and reporting are free. Each ad platform bills for its own ad spend. [OCTER Ads](https://ads-mcp.octer.ai/)
+**Free-forever ad management and optimization.** OCTER Ads supports GPT Ads, Google Ads, Meta Ads, Microsoft Ads, Amazon Ads, and TikTok Ads. OCTER checks account and API permissions. Ad platforms bill for ad spend. [OCTER Ads](https://ads-mcp.octer.ai/)
 
 ## What you get
 
-| Where | What you can do |
+| Item | Details |
 | --- | --- |
 | **Plugin details** | Authorize OCTER, link ad accounts, and check each platform’s connection status and permissions |
 | **OCTER Ads sidebar** | Build reports by platform, account, and date, with spend, impressions, clicks, conversions, and campaign details |
 | **Chat** | See performance in KPI cards, trend charts, and tables. Compare date ranges, spot campaigns with rising spend or falling conversions, and get optimization suggestions |
 | **Report preferences** | Save your usual platform, account, and date range for repeat reviews |
-
-### Supported ad platforms
-
-| Ad platform |
-| --- |
-| <img src="ui/platform-icons/openai.png" width="20" height="20" alt=""> GPT Ads |
-| <img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt=""> Google Ads |
-| <img src="ui/platform-icons/meta.svg" width="20" height="20" alt=""> Meta Ads |
-| <img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt=""> Microsoft Ads |
-| <img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt=""> Amazon Ads |
-| <img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt=""> TikTok Ads |
-
-Connect an account to query the performance data the platform returns. Report dimensions, metrics, and available actions depend on the platform API and account permissions.
+| **Supported ad platforms** | <img src="ui/platform-icons/openai.png" width="20" height="20" alt="">&nbsp;GPT Ads&emsp;<img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt="">&nbsp;Google Ads&emsp;<img src="ui/platform-icons/meta.svg" width="20" height="20" alt="">&nbsp;Meta Ads<br><img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt="">&nbsp;Microsoft Ads&emsp;<img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt="">&nbsp;Amazon Ads&emsp;<img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt="">&nbsp;TikTok Ads<br>Connect an account to query the performance data the platform returns. Report dimensions, metrics, and available actions depend on the platform API and account permissions. |
 
 ### API permission controls
 

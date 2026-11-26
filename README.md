@@ -4,7 +4,7 @@
 
 [English](README.en.md)
 
-**永久免费的广告管理和优化插件。** 在 DeepSeek Harness 连接广告账号、生成投放报表、分析表现并制定优化方案。账号连接、数据查询和报表功能均可免费使用。实际投放费用由各广告平台结算。 [OCTER Ads 官网](https://ads-mcp.octer.ai/)
+**永久免费的广告管理和优化插件。** 支持 GPT Ads、Google Ads、Meta Ads、Microsoft Ads、Amazon Ads 和 TikTok Ads。实际投放费用由各平台结算，账号和操作权限由 OCTER API 校验。 [OCTER Ads 官网](https://ads-mcp.octer.ai/)
 
 ## 装好后能做什么
 

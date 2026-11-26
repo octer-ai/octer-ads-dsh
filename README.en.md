@@ -4,7 +4,7 @@
 
 [中文](README.md)
 
-**A free-forever ad management and optimization plugin.** Connect ad accounts, build performance reports, and plan campaign improvements in DeepSeek Harness. Account connections, data queries, and reporting are free. Each ad platform bills for its own ad spend. [OCTER Ads](https://ads-mcp.octer.ai/)
+**Free-forever ad management and optimization.** OCTER Ads supports GPT Ads, Google Ads, Meta Ads, Microsoft Ads, Amazon Ads, and TikTok Ads. OCTER checks account and API permissions. Ad platforms bill for ad spend. [OCTER Ads](https://ads-mcp.octer.ai/)
 
 ## What you get
 

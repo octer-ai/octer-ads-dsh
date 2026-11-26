@@ -70,16 +70,35 @@ export const styles = `
 .oads-ready { color: var(--dsw-alias-state-success-primary, #55b992); }
 .oads-error { color: var(--dsw-alias-state-error-primary, #e66f61); }
 .oads-warn { color: var(--dsw-alias-state-warning-primary, #c98c39); }
-.oads-platforms { margin-top: 18px; }
-.oads-platforms ul { padding: 0; margin: 8px 0 0; list-style: none; }
+.oads-platforms { margin-top: 18px; container-type: inline-size; }
+.oads-platforms ul {
+  display: grid;
+  grid-template-columns: minmax(115px, 1fr) minmax(70px, .8fr) minmax(72px, 1fr) auto;
+  column-gap: 8px;
+  padding: 0;
+  margin: 8px 0 0;
+  list-style: none;
+}
 .oads-platforms li {
   min-height: 42px;
   display: grid;
-  grid-template-columns: minmax(95px, 1fr) minmax(55px, .8fr) minmax(45px, 1fr) auto;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: center;
-  gap: 8px;
+  row-gap: 6px;
   border-top: 1px solid var(--oads-border);
   padding: 6px 0;
+}
+.oads-platforms li > :nth-child(4) { justify-self: end; }
+.oads-platform-name { display: flex; align-items: center; gap: 8px; }
+.oads-platform-permission { display: flex; justify-content: center; text-align: center; }
+.oads-platform-icon {
+  box-sizing: border-box;
+  flex: none;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 5px;
+  padding: 2px;
 }
 .oads-confirm { margin-top: 12px; border-left: 3px solid var(--oads-accent); padding-left: 10px; }
 .oads-confirm button { margin-right: 8px; }
@@ -99,8 +118,8 @@ export const styles = `
 .oads table { border-collapse: collapse; width: 100%; text-align: left; font-variant-numeric: tabular-nums; }
 .oads th, .oads td { border-bottom: 1px solid var(--oads-border); padding: 7px; }
 .oads th { font-weight: 630; }
-@media (max-width: 480px) {
-  .oads-platforms li { grid-template-columns: minmax(80px, 1fr) minmax(40px, auto) minmax(40px, auto); }
-  .oads-platforms li > :nth-child(4) { grid-column: 1 / -1; justify-self: start; }
+@container (max-width: 375px) {
+  .oads-platforms ul { grid-template-columns: minmax(0, 1fr) minmax(0, 70px) minmax(0, 80px); }
+  .oads-platforms li > :nth-child(4) { grid-column: 1 / -1; }
 }
 `

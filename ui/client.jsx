@@ -1,10 +1,24 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { dateRange, formatMetric, fromToolContent, labels, metrics, summarize } from './report.js'
 import { styles } from './styles.js'
+import amazonIcon from './platform-icons/amazon-ads.png'
+import googleIcon from './platform-icons/google-ads.svg'
+import metaIcon from './platform-icons/meta.svg'
+import microsoftIcon from './platform-icons/microsoft-ads.png'
+import openAIIcon from './platform-icons/openai.png'
+import tiktokIcon from './platform-icons/tiktok.svg'
 
 const preferencesKey = 'octer-ads-dsh:preferences'
 const bindingPage = 'https://octer.ai/workspace/ads-mcp/platforms'
 const defaults = { platform: '', account: '', days: 7 }
+const platformIcons = {
+  openai_ads: openAIIcon,
+  google_ads: googleIcon,
+  meta_ads: metaIcon,
+  microsoft_ads: microsoftIcon,
+  amazon_ads: amazonIcon,
+  tiktok_ads: tiktokIcon,
+}
 
 function readPreferences() {
   try {
@@ -179,9 +193,12 @@ function Connection({ call, status, failure, reload, inventory, openDashboard })
         {Object.entries(labels).map(([key, label]) => {
           const item = inventory.platforms.find(platform => platform.platform === key)
           return <li key={key}>
-            <strong>{label}</strong>
+            <strong className="oads-platform-name">
+              <img className="oads-platform-icon" src={platformIcons[key]} alt="" width="22" height="22"/>
+              {label}
+            </strong>
             <span>{item?.configured ? '已绑定' : item ? '未绑定' : inventory.loading ? '检测中' : '未返回状态'}</span>
-            <Permissions platform={item}/>
+            <div className="oads-platform-permission"><Permissions platform={item}/></div>
             {platformLinks[key] ? <a href={platformLinks[key]} target="_blank" rel="noopener noreferrer">继续绑定 ↗</a>
               : item && !item.configured && <button disabled={busy}
                 onClick={() => void perform('bind', { platform: key }, ({ url: link }) => {
@@ -393,7 +410,9 @@ export function apply(ctx) {
   add('plugins.bundle.config', { key: 'octer-ads-dsh' }, () => <Workspace call={call} full={false}
     openDashboard={() => ctx.layout.selectPanel('octer-ads')}/>)
   add('main', { key: 'octer-ads' }, () => <Workspace call={call} full/>)
-  add('sidebar.panellist', { id: 'octer-ads', label: 'OCTER Ads', order: 55 }, () => <span aria-hidden="true">▥</span>)
+  add('sidebar.panellist', { id: 'octer-ads', label: 'OCTER Ads', order: 55 }, () => (
+    <span aria-hidden="true" style={{ fontSize: 16, lineHeight: 1 }}>🐙</span>
+  ))
   for (const tool of ['get_performance', 'get_microsoft_ads_report', 'get_amazon_report']) {
     add('tool.call.toolview', { key: 'mcp__ads__' + tool }, ToolReport)
   }

@@ -1,3 +1,6 @@
+import { registerLegacyConnector } from './legacy.js'
+import { resource } from './legacy-oauth.js'
+
 export const name = 'octer-ads'
 export const inject = ['mcpManager']
 
@@ -35,11 +38,15 @@ const copy = {
     signedOut: { en: 'Signed out of OCTER Ads.', zh: '已退出 OCTER Ads。' },
   },
 }
-
 export function apply(ctx) {
+  if (typeof ctx.mcpManager.startAuthorization !== 'function') {
+    ctx.inject(['credentials', 'tools', 'systemPrompt'], registerLegacyConnector)
+    return
+  }
+
   ctx.mcpManager.register(server, {
     transport: 'streamable-http',
-    url: 'https://ads-mcp.octer.ai/mcp',
+    url: resource,
     oauth: { credentialKey: 'mcp-client/octer-ads' },
     toolLoading: 'eager',
   })

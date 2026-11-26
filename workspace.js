@@ -4,6 +4,26 @@ const json = { mode: 'src-json' }
 const readTools = new Set(['list_platforms', 'list_accounts', 'get_performance', 'get_microsoft_ads_report', 'get_amazon_report', 'connect_platform'])
 
 const platforms = new Set(['google_ads', 'openai_ads', 'meta_ads', 'microsoft_ads', 'amazon_ads', 'tiktok_ads'])
+const toolErrors = {
+  provider_not_configured: '该平台尚未绑定，或当前连接缺少读取权限。请检查 OCTER 中的平台绑定。',
+  provider_permission_denied: '当前连接无权读取此广告账号。请在 OCTER 检查账号授权。',
+  provider_authentication_failed: '当前授权未通过验证。请在账号连接中重新授权。',
+  provider_resource_not_found: '广告平台未找到所选账号或报表。请确认账号后重试。',
+  provider_rate_limited: '广告平台暂时限制查询频率，请稍后重试。',
+  provider_unavailable: '广告平台暂时无法返回数据，请稍后重试。',
+  invalid_date_range: '请选择 1 至 31 天的报表周期。',
+  invalid_parameter: '查询参数无效，请检查所选账号和日期后重试。',
+  invalid_provider_response: '广告平台返回的数据格式异常，请稍后重试。',
+  report_expired: '报表已过期，请重新查询。',
+  report_failed: '广告平台未能生成报表，请重新查询。',
+}
+
+function toolFailure(message = '') {
+  const code = message.match(/\b(provider_[a-z_]+|invalid_[a-z_]+|report_expired|report_failed):/)?.[1]
+  if (code && Object.hasOwn(toolErrors, code)) return new Error(toolErrors[code])
+  if (/timed out|timeout|ETIMEDOUT/i.test(message)) return new Error('OCTER 查询超时，请稍后重试。')
+  return new Error('OCTER 暂时无法完成请求，请稍后重试。')
+}
 
 function checked(value, max = 512) {
   if (typeof value !== 'string' || !value || value.length > max) throw new Error('请求参数无效。')
@@ -35,7 +55,10 @@ function trustedLink(value, purpose) {
 }
 
 export function extractMcp(result) {
-  if (result?.isError) throw new Error('OCTER 无法读取数据，请检查账号授权后重试。')
+  if (result?.isError) {
+    const messages = result.content?.filter(item => item.type === 'text').map(item => item.text) ?? []
+    throw toolFailure(messages.join('\n'))
+  }
   if (result?.structuredContent && typeof result.structuredContent === 'object') return result.structuredContent
   for (const item of result?.content ?? []) {
     if (item.type !== 'text' || typeof item.text !== 'string' || !/^[\[{]/.test(item.text.trim())) continue
@@ -53,12 +76,14 @@ async function callMcp(ctx, operation, args, signal) {
   if (!readTools.has(operation)) throw new Error('不支持此操作。')
   const tool = ctx.tools.get('mcp__ads__' + operation)
   if (!tool) throw new Error('当前连接未提供此功能，请检查 OCTER 账号权限。')
+  let result
   try {
-    return extractMcp(await tool.execute(args, { signal }))
-  } catch {
+    result = await tool.execute(args, { signal })
+  } catch (error) {
     signal.throwIfAborted()
-    throw new Error('OCTER 暂时无法查询，请检查平台绑定和账号权限后重试。')
+    throw toolFailure(error instanceof Error ? error.message : '')
   }
+  return extractMcp(result)
 }
 
 export function registerWorkspace(ctx, legacy) {

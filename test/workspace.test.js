@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { fromToolContent, summarize } from '../ui/report.js'
-import { registerWorkspace } from '../workspace.js'
+import { extractMcp, registerWorkspace } from '../workspace.js'
 
 test('aggregates structured report rows and preserves unavailable metrics', () => {
   const rows = [
@@ -51,4 +51,28 @@ test('dashboard routes a paginated report through read-only MCP tools and reject
   await assert.rejects(rpc.request({ ...input, start: '2026-11-31' }, signal))
   await assert.rejects(rpc.request({ ...input, action: 'write_campaign' }, signal))
   assert.equal(calls.length, 2)
+})
+
+test('dashboard distinguishes query failures from permission errors and empty reports', async () => {
+  let rpc
+  let failure
+  registerWorkspace({
+    provide: (_key, service) => { rpc = service },
+    typert: { register() {} },
+    tools: {
+      get: () => ({ async execute() { throw new Error(failure) } }),
+    },
+  })
+  const signal = new AbortController().signal
+  const report = { action: 'report', platform: 'google_ads', account: '1234567890', start: '2026-11-01', end: '2026-11-26' }
+  failure = 'Tool execution failed: provider_permission_denied: private upstream details'
+  await assert.rejects(rpc.request(report, signal), { message: '当前连接无权读取此广告账号。请在 OCTER 检查账号授权。' })
+  failure = 'MCP error -32001: Request timed out'
+  await assert.rejects(rpc.request(report, signal), { message: 'OCTER 查询超时，请稍后重试。' })
+
+  const empty = { rows: [], state: 'ready' }
+  assert.equal(extractMcp({ structuredContent: empty }), empty)
+  assert.throws(() => extractMcp({ content: [] }), { message: 'OCTER 没有返回可用的报表数据。' })
+  assert.throws(() => extractMcp({ isError: true, content: [{ type: 'text', text: 'provider_rate_limited: details' }] }),
+    { message: '广告平台暂时限制查询频率，请稍后重试。' })
 })

@@ -1,8 +1,8 @@
 # OCTER Ads for DeepSeek Harness
 
-永久免费的广告管理和优化插件。分析已连接广告账号的花费、点击和转化，生成投放报表。广告操作受 OCTER 的 API 权限控制，实际投放费用由广告平台结算。
+永久免费的广告管理和优化插件。OCTER Ads 支持 GPT Ads、Google Ads、Meta Ads、Microsoft Ads、Amazon Ads 和 TikTok Ads。可分析已连接广告账号的花费、点击和转化，生成投放报表。广告操作受 OCTER 的 API 权限控制，实际投放费用由广告平台结算。
 
-Free-forever ad management and optimization. Analyze spend, clicks, and conversions for your connected accounts and generate performance reports. OCTER enforces your API permissions. Ad platforms bill for ad spend.
+A free-forever ad management and optimization plugin. OCTER Ads supports GPT Ads, Google Ads, Meta Ads, Microsoft Ads, Amazon Ads, and TikTok Ads. Analyze spend, clicks, and conversions for your connected accounts and generate performance reports. OCTER enforces your API permissions. Ad platforms bill for ad spend.
 
 ## 安装与授权 / Install and connect
 

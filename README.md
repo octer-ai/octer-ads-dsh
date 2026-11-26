@@ -23,11 +23,37 @@ In a compatible Desktop client, search for and install `github:octer-ai/octer-ad
 
 Open **OCTER Ads** in Plugins, select **Connect OCTER Ads**, and authorize it in your browser. If you need to link ad accounts, visit [OCTER Ads](https://ads-mcp.octer.ai/). The plugin registers the MCP server as `ads`. If you already added a server with that name manually, remove that entry in Settings before enabling the plugin.
 
+## 绑定 GPT Ads / Connect GPT Ads
+
+1. 连接 OCTER Ads 后，在 Harness 输入「帮我绑定 GPT Ads 账号」并打开助手返回的 OCTER 绑定链接。
+2. 从 GPT Ads Manager 获取 Advertiser API Key，仅在 OCTER 的绑定页面填写并验证。
+3. 回到 Harness 输入 `ads`，确认 GPT Ads 已绑定。
+
+1. After connecting OCTER Ads, enter “Help me connect my GPT Ads account” in Harness and open the OCTER link returned by the assistant.
+2. Get your Advertiser API Key from GPT Ads Manager and enter it on the OCTER account connection page.
+3. Return to Harness and enter `ads` to confirm that GPT Ads is connected.
+
 ## 使用示例 / Example prompts
 
-- `ads`
-- 将最近 7 天 Google Ads 的花费、点击和转化整理成投放报表，并用图表展示趋势。
-- Show my Microsoft Ads campaign performance for the last 30 days, with a chart for spend and conversions.
+输入 `ads` 可查看已绑定的广告平台。也可以直接复制下面的示例到 Harness。
+
+Enter `ads` to see which ad platforms are connected, or paste one of the prompts below into Harness.
+
+### 中文示例
+
+- 帮我绑定 GPT Ads 账号，给我 OCTER 的绑定链接。
+- 列出我已连接的 GPT Ads 账号及其广告系列。
+- 将最近 7 天 Google Ads 的花费、点击和转化整理成投放报表，并用折线图展示每日趋势。
+- 比较 Meta Ads 最近 7 天和前 7 天的投放效果，按广告系列列出花费、点击和转化的变化。
+- 汇总最近 30 天 Microsoft Ads 的投放表现，用表格展示广告系列明细，用柱状图对比花费和转化。
+
+### English examples
+
+- Help me connect my GPT Ads account and give me the OCTER connection link.
+- List my connected GPT Ads accounts and their campaigns.
+- Create a Google Ads report for the last 7 days with daily line charts for spend, clicks, and conversions.
+- Compare the last 7 days of Meta Ads performance with the previous 7 days. Show changes in spend, clicks, and conversions by campaign.
+- Summarize the last 30 days of Microsoft Ads performance with a campaign table and bar charts for spend and conversions.
 
 在「插件」的 **OCTER Ads** 页面退出可清除 Harness 中保存的授权。可用平台和操作取决于当前 OCTER 账号的绑定状态和授权。
 

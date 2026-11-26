@@ -591,7 +591,21 @@ function apply(ctx) {
     }
   ));
   add("main", { key: "octer-ads" }, () => /* @__PURE__ */ import_react.default.createElement(Workspace, { call, full: true }));
-  add("sidebar.panellist", { id: "octer-ads", label: "OCTER Ads", order: 55 }, () => /* @__PURE__ */ import_react.default.createElement("span", { "aria-hidden": "true", style: { fontSize: 16, lineHeight: 1 } }, "\u{1F419}"));
+  add("sidebar.panellist", { id: "octer-ads", label: "OCTER Ads", order: 55 }, ({ size = 16 }) => /* @__PURE__ */ import_react.default.createElement(
+    "svg",
+    {
+      "aria-hidden": "true",
+      width: size,
+      height: size,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.8",
+      strokeLinecap: "round",
+      strokeLinejoin: "round"
+    },
+    /* @__PURE__ */ import_react.default.createElement("path", { d: "M5.5 13V9.5a6.5 6.5 0 0 1 13 0V13M5.5 13a3 3 0 1 0 2.5 3M18.5 13a3 3 0 1 1-2.5 3M8 16v2a2 2 0 0 0 4 0v-2m0 2a2 2 0 0 0 4 0v-2M9 10h.01M15 10h.01" })
+  ));
   for (const tool of ["get_performance", "get_microsoft_ads_report", "get_amazon_report"]) {
     add("tool.call.toolview", { key: "mcp__ads__" + tool }, ToolReport);
   }

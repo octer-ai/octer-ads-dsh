@@ -8,13 +8,45 @@
 
 ## What you get
 
-| Item | Details |
-| --- | --- |
-| **Plugin details** | Authorize OCTER, link ad accounts, and check each platform’s connection status and permissions |
-| **OCTER Ads sidebar** | Build reports by platform, account, and date, with spend, impressions, clicks, conversions, and campaign details |
-| **Chat** | See performance in KPI cards, trend charts, and tables. Compare date ranges, spot campaigns with rising spend or falling conversions, and get optimization suggestions |
-| **Report preferences** | Save your usual platform, account, and date range for repeat reviews |
-| **Supported ad platforms** | <img src="ui/platform-icons/openai.png" width="20" height="20" alt="">&nbsp;GPT Ads&emsp;<img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt="">&nbsp;Google Ads&emsp;<img src="ui/platform-icons/meta.svg" width="20" height="20" alt="">&nbsp;Meta Ads<br><img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt="">&nbsp;Microsoft Ads&emsp;<img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt="">&nbsp;Amazon Ads&emsp;<img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt="">&nbsp;TikTok Ads<br>Connect an account to query the performance data the platform returns. Report dimensions, metrics, and available actions depend on the platform API and account permissions. |
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th colspan="3">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Plugin details</strong></td>
+      <td colspan="3">Authorize OCTER, link ad accounts, and check each platform’s connection status and permissions</td>
+    </tr>
+    <tr>
+      <td><strong>OCTER Ads sidebar</strong></td>
+      <td colspan="3">Build reports by platform, account, and date, with spend, impressions, clicks, conversions, and campaign details</td>
+    </tr>
+    <tr>
+      <td><strong>Chat</strong></td>
+      <td colspan="3">See performance in KPI cards, trend charts, and tables. Compare date ranges, spot campaigns with rising spend or falling conversions, and get optimization suggestions</td>
+    </tr>
+    <tr>
+      <td><strong>Report preferences</strong></td>
+      <td colspan="3">Save your usual platform, account, and date range for repeat reviews</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Supported ad platforms</strong></td>
+      <td><img src="ui/platform-icons/openai.png" width="20" height="20" alt="">&nbsp;GPT Ads</td>
+      <td><img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt="">&nbsp;Google Ads</td>
+      <td><img src="ui/platform-icons/meta.svg" width="20" height="20" alt="">&nbsp;Meta Ads</td>
+    </tr>
+    <tr>
+      <td><img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt="">&nbsp;Microsoft Ads</td>
+      <td><img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt="">&nbsp;Amazon Ads</td>
+      <td><img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt="">&nbsp;TikTok Ads</td>
+    </tr>
+  </tbody>
+</table>
+
+Connect an account to query the performance data the platform returns. Report dimensions, metrics, and available actions depend on the platform API and account permissions.
 
 ### API permission controls
 

@@ -17,11 +17,38 @@
 
 ### 支持的广告平台
 
-支持 **GPT Ads、Google Ads、Meta Ads、Microsoft Ads、Amazon Ads 和 TikTok Ads**。连接账号后，可查询该平台返回的投放数据。报表维度、指标和可执行的广告操作取决于平台 API 与账号授权。
+| 广告平台 |
+| --- |
+| <img src="ui/platform-icons/openai.png" width="20" height="20" alt=""> GPT Ads |
+| <img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt=""> Google Ads |
+| <img src="ui/platform-icons/meta.svg" width="20" height="20" alt=""> Meta Ads |
+| <img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt=""> Microsoft Ads |
+| <img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt=""> Amazon Ads |
+| <img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt=""> TikTok Ads |
+
+连接账号后，可查询该平台返回的投放数据。报表维度、指标和可执行的广告操作取决于平台 API 与账号授权。
 
 ### API 权限控制
 
-OCTER API 会按广告平台和账号校验权限。**只读**权限可查询账号、广告系列和投放报表。**读写**权限还可执行该平台支持且账号已授权的广告管理操作。API 会拒绝未授权的请求。做投放复盘时，可使用只读权限获取报表和优化建议。
+OCTER API 会按广告平台和账号校验权限。
+
+| 权限 | 查询与分析 | 广告管理 |
+| --- | --- | --- |
+| **只读** | 查询账号、广告系列和投放报表，基于数据获取优化建议 | API 拒绝写入 |
+| **读写** | 查询账号、广告系列和投放报表，基于数据获取优化建议 | 可执行平台支持且账号已授权的操作 |
+| **未授权** | API 拒绝访问 | API 拒绝写入 |
+
+## 界面预览
+
+### 左侧栏投放看板
+
+![DeepSeek Harness 左侧栏中的 OCTER Ads 入口及投放看板](docs/screenshots/harness-sidebar.png)
+
+### 投放报表
+
+![Google Ads 示例报表，包含核心指标、每日花费图表和广告系列明细](docs/screenshots/google-ads-report.png)
+
+截图使用模拟账号和投放数据。
 
 ## 安装
 

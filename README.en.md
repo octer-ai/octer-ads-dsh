@@ -17,11 +17,38 @@
 
 ### Supported ad platforms
 
-OCTER Ads supports **GPT Ads, Google Ads, Meta Ads, Microsoft Ads, Amazon Ads, and TikTok Ads**. Connect an account to query the performance data the platform returns. Report dimensions, metrics, and available actions depend on the platform API and account permissions.
+| Ad platform |
+| --- |
+| <img src="ui/platform-icons/openai.png" width="20" height="20" alt=""> GPT Ads |
+| <img src="ui/platform-icons/google-ads.svg" width="20" height="20" alt=""> Google Ads |
+| <img src="ui/platform-icons/meta.svg" width="20" height="20" alt=""> Meta Ads |
+| <img src="ui/platform-icons/microsoft-ads.png" width="20" height="20" alt=""> Microsoft Ads |
+| <img src="ui/platform-icons/amazon-ads.png" width="20" height="20" alt=""> Amazon Ads |
+| <img src="ui/platform-icons/tiktok.svg" width="20" height="20" alt=""> TikTok Ads |
+
+Connect an account to query the performance data the platform returns. Report dimensions, metrics, and available actions depend on the platform API and account permissions.
 
 ### API permission controls
 
-The OCTER API checks permissions for each ad platform and account. **Read-only** access covers account details, campaigns, and reports. **Read/write** access also allows campaign management actions supported by the platform and authorized for the account. The API rejects unauthorized requests. Read-only access is enough to run reports and get optimization suggestions.
+The OCTER API checks permissions for each ad platform and account.
+
+| Access | Reporting and analysis | Ad management |
+| --- | --- | --- |
+| **Read-only** | Query accounts, campaigns, and reports and get optimization suggestions | The API rejects write requests |
+| **Read/write** | Query accounts, campaigns, and reports and get optimization suggestions | Run actions supported by the platform and authorized for the account |
+| **No access** | The API rejects queries | The API rejects write requests |
+
+## Screenshots
+
+### Harness sidebar and dashboard
+
+![OCTER Ads in the DeepSeek Harness sidebar, with its dashboard open](docs/screenshots/harness-sidebar.png)
+
+### Performance report
+
+![Sample Google Ads report with key metrics, a daily spend chart, and campaign details](docs/screenshots/google-ads-report.png)
+
+Screenshots use a demo account and simulated performance data. The interface shown is in Chinese.
 
 ## Install
 

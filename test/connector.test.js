@@ -2,37 +2,22 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { apply, inject } from '../index.js'
 
-test('registers the production server and the OAuth account under the same name', () => {
+test('uses native OAuth and registers the workspace when Host UI services are available', () => {
   let entry
-  let account
-  let dispose
-  let unregistered = false
-  const stop = () => {
-    unregistered = true
-  }
-
-  apply({
+  let workspace
+  const ctx = {
     mcpManager: {
       startAuthorization() {},
-      register: (server, config) => {
-        entry = { server, config }
-      },
+      register: (server, config) => { entry = { server, config } },
     },
     inject: (services, activate) => {
-      assert.deepEqual(services, ['mcpAccounts'])
-      activate({
-        effect: (register) => {
-          dispose = register()
-        },
-        mcpAccounts: {
-          register: (options) => {
-            account = options
-            return stop
-          },
-        },
-      })
+      assert.deepEqual(services, ['typert', 'tools'])
+      activate(ctx)
     },
-  })
+    provide: (name, service) => { workspace = { name, service } },
+    typert: { register() {} },
+  }
+  apply(ctx)
 
   assert.deepEqual(inject, ['mcpManager'])
   assert.deepEqual(entry, {
@@ -44,18 +29,14 @@ test('registers the production server and the OAuth account under the same name'
       toolLoading: 'eager',
     },
   })
-  assert.equal(account.server, entry.server)
-  assert.equal(account.packageName, 'octer-ads-dsh')
-  assert.equal(account.copy.connect.en, 'Connect OCTER Ads')
-  assert.equal(account.copy.connect.zh, '连接 OCTER Ads')
-  dispose()
-  assert.equal(unregistered, true)
+  assert.equal(workspace.name, 'octerAdsWorkspace')
+  assert.equal(typeof workspace.service.request, 'function')
 })
 
-test('keeps the MCP integration available without the Plugins page service', () => {
+test('keeps native MCP available in profiles without workspace services', () => {
   const registered = []
   apply({
-    mcpManager: { startAuthorization() {}, register: (server) => registered.push(server) },
+    mcpManager: { startAuthorization() {}, register: server => registered.push(server) },
     inject: () => {},
   })
 
@@ -72,6 +53,7 @@ test('registers the legacy transport without relying on native OAuth', () => {
     tools: { register: ({ name }) => { tools.push(name) } },
     systemPrompt: { getSectionOrder: () => 0, section: () => {} },
     inject: (services, activate) => {
+      if (services.includes('typert')) return
       assert.deepEqual(services, ['credentials', 'tools', 'systemPrompt'])
       activate(ctx)
     },

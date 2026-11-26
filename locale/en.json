@@ -1,6 +1,7 @@
 {
   "meta": {
     "title": "OCTER Ads",
-    "description": "Analyze ad performance, generate reports, and manage connected ad accounts within your OCTER permissions."
+    "description": "Analyze ad performance, generate reports, and manage connected ad accounts within your OCTER permissions.",
+    "detail": "README.en.md"
   }
 }

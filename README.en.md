@@ -76,6 +76,14 @@ Screenshots use a demo account and simulated performance data. The interface sho
 2. Open **OCTER Ads** in the sidebar and authorize OCTER in a browser on the same computer.
 3. Link ad accounts in **OCTER**. For GPT Ads, enter your Advertiser API Key from GPT Ads Manager on the OCTER connection page.
 
+To install in the web profile from npm, run the following command.
+
+```sh
+dsh plugin --profile web add octer-ads-dsh
+```
+
+You can also install from GitHub.
+
 ```sh
 dsh plugin --profile web add github:octer-ai/octer-ads-dsh
 ```

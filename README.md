@@ -76,7 +76,13 @@ OCTER API 会按广告平台和账号校验权限。
 2. 打开左侧栏 **OCTER Ads**，点击「连接 OCTER」，在同一台电脑的浏览器完成授权。
 3. 在 **OCTER** 绑定广告账号。GPT Ads 需要在 OCTER 绑定页填写 GPT Ads Manager 的 Advertiser API Key。
 
-Web 版也可以用 CLI 安装：
+Web 版可通过 npm 安装。
+
+```sh
+dsh plugin --profile web add octer-ads-dsh
+```
+
+也可以从 GitHub 源码安装。
 
 ```sh
 dsh plugin --profile web add github:octer-ai/octer-ads-dsh

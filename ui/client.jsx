@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { bindingPage } from '../binding.js'
 import { dateRange, formatMetric, fromToolContent, labels, metrics, summarize } from './report.js'
 import { styles } from './styles.js'
 import amazonIcon from './platform-icons/amazon-ads.png'
@@ -9,7 +10,6 @@ import openAIIcon from './platform-icons/openai.png'
 import tiktokIcon from './platform-icons/tiktok.svg'
 
 const preferencesKey = 'octer-ads-dsh:preferences'
-const bindingPage = 'https://octer.ai/workspace/ads-mcp/platforms'
 const defaults = { platform: '', account: '', days: 7 }
 const platformIcons = {
   openai_ads: openAIIcon,

@@ -1,3 +1,4 @@
+import { bindingClientHeaders } from './binding.js'
 import { createOAuthClient, GrantRejected, resource } from './legacy-oauth.js'
 
 const accessKey = 'OCTER_ADS_DSH_LEGACY_ACCESS_TOKEN'
@@ -133,7 +134,7 @@ export function registerLegacyConnector(ctx) {
   ctx.mcpManager.register('ads', {
     transport: 'streamable-http',
     url: resource,
-    headers: { Authorization: 'Bearer ${credential:' + accessKey + '}' },
+    headers: { ...bindingClientHeaders, Authorization: 'Bearer ${credential:' + accessKey + '}' },
     toolLoading: 'eager',
   })
 

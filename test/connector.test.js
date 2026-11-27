@@ -25,6 +25,7 @@ test('uses native OAuth and registers the workspace when Host UI services are av
     config: {
       transport: 'streamable-http',
       url: 'https://ads-mcp.octer.ai/mcp',
+      headers: { 'X-Octer-Client': 'deepseek_harness' },
       oauth: { credentialKey: 'mcp-client/octer-ads' },
       toolLoading: 'eager',
     },
@@ -65,7 +66,10 @@ test('registers the legacy transport without relying on native OAuth', () => {
     config: {
       transport: 'streamable-http',
       url: 'https://ads-mcp.octer.ai/mcp',
-      headers: { Authorization: 'Bearer ${credential:OCTER_ADS_DSH_LEGACY_ACCESS_TOKEN}' },
+      headers: {
+        'X-Octer-Client': 'deepseek_harness',
+        Authorization: 'Bearer ${credential:OCTER_ADS_DSH_LEGACY_ACCESS_TOKEN}',
+      },
       toolLoading: 'eager',
     },
   })

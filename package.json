@@ -2,6 +2,7 @@
   "name": "octer-ads-dsh",
   "version": "0.3.0",
   "description": "Free-forever ad management, optimization, and performance reporting for DeepSeek Harness.",
+  "license": "MIT",
   "type": "module",
   "main": "./index.js",
   "icon": "./icon.png",

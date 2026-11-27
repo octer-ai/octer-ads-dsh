@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { fromToolContent, summarize } from '../ui/report.js'
 import { extractMcp, registerWorkspace } from '../workspace.js'
+import { bindingPage } from '../binding.js'
 
 test('aggregates structured report rows and preserves unavailable metrics', () => {
   const rows = [
@@ -75,4 +76,32 @@ test('dashboard distinguishes query failures from permission errors and empty re
   assert.throws(() => extractMcp({ content: [] }), { message: 'OCTER 没有返回可用的报表数据。' })
   assert.throws(() => extractMcp({ isError: true, content: [{ type: 'text', text: 'provider_rate_limited: details' }] }),
     { message: '广告平台暂时限制查询频率，请稍后重试。' })
+})
+
+test('binding links identify DeepSeek Harness and preserve the selected ad platform', async () => {
+  let rpc
+  let upstream = 'https://octer.ai/workspace/connectors?ads_platform=meta_ads'
+  registerWorkspace({
+    provide: (_key, service) => { rpc = service },
+    typert: { register() {} },
+    tools: {
+      get(name) {
+        assert.equal(name, 'mcp__ads__connect_platform')
+        return { async execute(args) {
+          assert.deepEqual(args, { platform: 'meta_ads' })
+          return { structuredContent: { url: upstream } }
+        } }
+      },
+    },
+  })
+  assert.equal(bindingPage, 'https://octer.ai/workspace/ads-mcp/platforms?client=deepseek_harness')
+  const input = { action: 'bind', platform: 'meta_ads' }
+  const signal = new AbortController().signal
+  assert.deepEqual(await rpc.request(input, signal), {
+    url: 'https://octer.ai/workspace/connectors?ads_platform=meta_ads&client=deepseek_harness',
+  })
+  upstream += '&client=deepseek_harness'
+  assert.equal((await rpc.request(input, signal)).url, upstream)
+  upstream = 'https://external.example.test/bind'
+  await assert.rejects(rpc.request(input, signal), /无效的授权链接/)
 })

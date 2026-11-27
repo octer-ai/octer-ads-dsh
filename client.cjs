@@ -38,6 +38,10 @@ __export(client_exports, {
 module.exports = __toCommonJS(client_exports);
 var import_react = __toESM(require("react"), 1);
 
+// binding.js
+var bindingClient = "deepseek_harness";
+var bindingPage = `https://octer.ai/workspace/ads-mcp/platforms?client=${bindingClient}`;
+
 // ui/report.js
 var labels = {
   openai_ads: "GPT Ads",
@@ -265,7 +269,6 @@ var tiktok_default = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"
 
 // ui/client.jsx
 var preferencesKey = "octer-ads-dsh:preferences";
-var bindingPage = "https://octer.ai/workspace/ads-mcp/platforms";
 var defaults = { platform: "", account: "", days: 7 };
 var platformIcons = {
   openai_ads: openai_default,

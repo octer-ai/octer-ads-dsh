@@ -1,3 +1,5 @@
+import { bindingClient } from './binding.js'
+
 const name = 'octerAdsWorkspace'
 const packageName = 'octer-ads-dsh'
 const json = { mode: 'src-json' }
@@ -122,7 +124,11 @@ export function registerWorkspace(ctx, legacy) {
         }
         case 'bind': {
           const data = await read('connect_platform', { platform: platformKey(input.platform) }, signal)
-          return { url: trustedLink(data.url, 'binding') }
+          const link = trustedLink(data.url, 'binding')
+          if (!link) return { url: null }
+          const url = new URL(link)
+          url.searchParams.set('client', bindingClient)
+          return { url: url.href }
         }
         case 'accounts': {
           const args = { platform: platformKey(input.platform), limit: 50 }

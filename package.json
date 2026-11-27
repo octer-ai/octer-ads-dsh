@@ -47,7 +47,13 @@
     "dsh-plugin",
     "deepseek-harness",
     "ads",
-    "mcp"
+    "mcp",
+    "gpt-ads",
+    "google-ads",
+    "meta-ads",
+    "microsoft-ads",
+    "amazon-ads",
+    "tiktok-ads"
   ],
   "repository": {
     "type": "git",
